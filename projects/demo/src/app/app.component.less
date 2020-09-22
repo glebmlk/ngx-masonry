@@ -1,0 +1,30 @@
+@tablet: ~'screen and (max-width: 959px)';
+@s-desktop-interval: ~'(min-width: 1024px) and (max-width: 1599px)';
+@s-desktop-lg-min: ~'screen and (min-width: 1600px)';
+
+.item {
+    @media @tablet {
+        // < 1024
+        width: 100%;
+    }
+
+    @media @s-desktop-interval {
+        // 1024 - 1599
+        width: 50%;
+    }
+
+    @media @s-desktop-lg-min {
+        // > 1600
+        width: 33.333%;
+    }
+
+    .item-content {
+        position: relative;
+        padding: 16px;
+
+        .image {
+            display: block;
+            width: 100%;
+        }
+    }
+}

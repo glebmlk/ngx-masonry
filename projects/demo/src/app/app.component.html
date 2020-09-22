@@ -1,0 +1,9 @@
+<section>
+    <ngm-masonry [options]="options" [useImagesLoaded]="false">
+        <div ngmMasonryItem *ngFor="let item of items; let i = index" class="item">
+            <div class="item-content">
+                <img class="image" [attr.src]="item" />
+            </div>
+        </div>
+    </ngm-masonry>
+</section>

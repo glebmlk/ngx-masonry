@@ -1,17 +1,7 @@
 {
-    "extends": "../../tslint.json",
+    "extends": ["@tinkoff/linters/tslint/bases/prettier.tslint.json"],
     "rules": {
-        "directive-selector": [
-            true,
-            "attribute",
-            "lib",
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            "lib",
-            "kebab-case"
-        ]
+        "ordered-imports": true,
+        "no-unused-variable": true
     }
 }
