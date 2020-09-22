@@ -1,33 +1,89 @@
 {
-  "name": "ngx-masonry",
-  "version": "1.1.4",
-  "description": "Angular Module for displaying a feed of items in a masonry layout using https://github.com/desandro/masonry",
-  "keywords": [
-    "angular",
-    "angular 2",
-    "masonry",
-    "masonry layout",
-    "masonry feed",
-    "desandro",
-    "masonry",
-    "ng",
-    "ngx"
-  ],
-  "homepage": "https://github.com/wynfred/ngx-masonry/",
-  "bugs": {
-    "url": "https://github.com/wynfred/ngx-masonry/issues"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wynfred/ngx-masonry/"
-  },
-  "peerDependencies": {
-    "@angular/common": ">5.0.0",
-    "@angular/core": ">5.0.0"
-  },
-  "dependencies": {
-    "masonry-layout": "^4.2.0",
-    "imagesloaded": "^4.1.1"
-  }
+    "name": "ngm-masonry",
+    "version": "1.0.1",
+    "description": "This package was originally a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to allow it to work with newer versions of Angular.",
+    "main": "index.js",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "build:demo": "npm install --prefix ./projects/demo && ng run demo:build",
+        "build:ngm-masonry": "npm install --prefix ./projects/ngm-masonry && ng run ngm-masonry:build",
+        "postbuild": "node scripts/postbuild.js",
+        "lint": "ng lint",
+        "typecheck": "tsc --noEmit --skipLibCheck",
+        "release": "standard-version",
+        "release:patch": "npm run release -- --release-as patch",
+        "release:minor": "npm run release -- --release-as minor",
+        "release:major": "npm run release -- --release-as major",
+        "publish": "npm run build && npm publish ./dist/ngm-masonry"
+    },
+    "dependencies": {
+        "@angular/animations": "^8.2.7",
+        "@angular/common": "^8.2.7",
+        "@angular/compiler": "^8.2.7",
+        "@angular/core": "^8.2.7",
+        "@angular/forms": "^8.2.7",
+        "@angular/platform-browser": "^8.2.7",
+        "@angular/platform-browser-dynamic": "^8.2.7",
+        "@angular/router": "^8.2.7",
+        "core-js": "^2.5.4",
+        "dompurify": "^2.0.7",
+        "rxjs": "^6.5.2",
+        "tslib": "^1.10.0",
+        "zone.js": "~0.8.29"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "^0.803.5",
+        "@angular-devkit/build-ng-packagr": "^0.803.5",
+        "@angular/cli": "~8.3.5",
+        "@angular/compiler-cli": "^8.2.7",
+        "@angular/language-service": "^8.2.7",
+        "@tinkoff/linters": "^0.4.0",
+        "@types/node": "~8.9.4",
+        "codelyzer": "^5.1.0",
+        "coveralls": "^3.0.5",
+        "husky": "^3.0.2",
+        "imagesloaded": "^4.1.4",
+        "jasmine-core": "~3.4.0",
+        "jasmine-spec-reporter": "~4.2.1",
+        "karma": "^4.2.0",
+        "karma-chrome-launcher": "^3.0.0",
+        "karma-coverage-istanbul-reporter": "^2.1.0",
+        "karma-jasmine": "~2.0.1",
+        "karma-jasmine-html-reporter": "^1.4.2",
+        "lint-staged": "^9.2.1",
+        "masonry-layout": "^4.2.2",
+        "ng-packagr": "4.7.1",
+        "prettier": "^1.18.2",
+        "standard-version": "^8.0.1",
+        "ts-node": "^8.3.0",
+        "tsickle": "0.34.0",
+        "tslint": "^5.18.0",
+        "typescript": "3.5.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && npm run typecheck"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,html,md,less,json}": ["prettier --write", "git add"],
+        "*.ts": "tslint"
+    },
+    "standard-version": {
+        "scripts": {
+            "postbump": "node scripts/syncVersions.js"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/glebmlk/ngx-masonry.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/glebmlk/ngx-masonry/issues"
+    },
+    "homepage": "https://github.com/glebmlk/ngx-masonry#readme"
 }
