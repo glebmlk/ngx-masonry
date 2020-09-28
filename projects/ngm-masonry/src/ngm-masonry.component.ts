@@ -109,14 +109,14 @@ export class NgmMasonryComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     public layout() {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             this._msnry.layout();
             this.changeDetectorRef.markForCheck();
         });
     }
 
     public reloadItems() {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             this._msnry.reloadItems();
             this.changeDetectorRef.markForCheck();
         });
@@ -139,6 +139,7 @@ export class NgmMasonryComponent implements OnInit, OnChanges, OnDestroy {
                     // Tell Masonry that a child element has been added
                     setTimeout(() => {
                         this._msnry.appended(element);
+                        this.changeDetectorRef.markForCheck();
                     });
 
                     // layout if first item
@@ -152,6 +153,7 @@ export class NgmMasonryComponent implements OnInit, OnChanges, OnDestroy {
                 // Tell Masonry that a child element has been added
                 setTimeout(() => {
                     this._msnry.appended(element);
+                    this.changeDetectorRef.markForCheck();
                 });
 
                 // layout if first item

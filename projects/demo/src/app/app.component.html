@@ -2,7 +2,12 @@
     <ngm-masonry [options]="options" [useImagesLoaded]="false">
         <div ngmMasonryItem *ngFor="let item of items; let i = index" class="item">
             <div class="item-content">
-                <img class="image" [attr.src]="item" />
+                <ng-container *ngIf="item.isDynamic; else static">
+                    <dynamic></dynamic>
+                </ng-container>
+                <ng-template #static>
+                    <img class="image" [attr.src]="item.src" />
+                </ng-template>
             </div>
         </div>
     </ngm-masonry>

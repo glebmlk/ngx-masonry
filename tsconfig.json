@@ -9,6 +9,7 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
         "importHelpers": true,
         "noUnusedLocals": true,
         "strict": true,

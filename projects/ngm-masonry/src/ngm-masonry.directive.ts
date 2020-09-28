@@ -22,6 +22,8 @@ declare var window: IMutationWindow;
     selector: '[ngmMasonryItem], ngmMasonryItem',
 })
 export class NgmMasonryDirective implements OnDestroy, AfterViewInit {
+    private _observer: MutationObserver;
+
     constructor(
         private _element: ElementRef,
         @Inject(forwardRef(() => NgmMasonryComponent))
@@ -39,27 +41,33 @@ export class NgmMasonryDirective implements OnDestroy, AfterViewInit {
     ngOnDestroy() {
         if (isPlatformBrowser(this.platformId)) {
             this._parent.remove(this._element.nativeElement);
+
+            if (!!this._observer) {
+                this._observer.disconnect();
+            }
         }
     }
 
-    /** When HTML in brick changes dinamically, observe that and change layout */
+    /** When HTML in brick changes dynamically, observe that and change layout */
     private watchForHtmlChanges(): void {
         MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
         if (MutationObserver) {
-            /** Watch for any changes to subtree */
-            const self = this;
-            const observer = new MutationObserver(
-                (mutations: MutationRecord[], observer: MutationObserver) => {
-                    self._parent.layout();
-                },
-            );
+            this._observer = new MutationObserver(() => {
+                requestAnimationFrame(() => {
+                    this._parent.layout();
+                });
+            });
+        }
 
+        if (!!this._observer) {
             // define what element should be observed by the observer
             // and what types of mutations trigger the callback
-            observer.observe(this._element.nativeElement, {
+            this._observer.observe(this._element.nativeElement, {
                 subtree: true,
                 childList: true,
+                attributes: true,
+                attributeFilter: ['src'],
             });
         }
     }

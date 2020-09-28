@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgmMasonryOptions} from 'ngm-masonry';
+import {INgmMasonryOptions} from 'ngm-masonry';
 
 @Component({
     selector: 'app-root',
@@ -7,14 +7,17 @@ import {NgmMasonryOptions} from 'ngm-masonry';
     styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-    items: string[];
-    options: NgmMasonryOptions = {
+    items: Array<{isDynamic: boolean; src: string}>;
+    options: INgmMasonryOptions = {
         transitionDuration: '0',
         itemSelector: '.item',
         columnWidth: '.item',
     };
 
     constructor() {
-        this.items = Array.from({length: 5}, () => 'assets/capitan_cover.jpg');
+        this.items = Array.from({length: 50}, (value: any, index: number) => ({
+            isDynamic: index % 2 === 0,
+            src: 'assets/static.jpg',
+        }));
     }
 }
