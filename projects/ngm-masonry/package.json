@@ -1,6 +1,6 @@
 {
     "name": "ngm-masonry",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Angular Module for displaying a feed of items in a masonry layout using https://github.com/glebmlk/ngx-masonry",
     "keywords": [
         "angular",
