@@ -1,6 +1,6 @@
 {
     "name": "ngm-masonry",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "This package was originally a fork from [https://github.com/jelgblad/angular2-masonry](https://github.com/jelgblad/angular2-masonry) to allow it to work with newer versions of Angular.",
     "main": "index.js",
     "scripts": {
